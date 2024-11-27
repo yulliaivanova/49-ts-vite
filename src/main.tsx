@@ -37,6 +37,9 @@ import Products from "./сomponents/products/Products";
 import NoPage from "./сomponents/noPage/NoPage";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./сomponents/cart/Cart";
+import Store from './сomponents/store/Store';
+import StorePage from './сomponents/storePage/StorePage';
+import LoginForm from './сomponents/loginForm/LoginForm';
 
 createRoot(document.getElementById('root')!).render(
   <CartProvider>
@@ -53,7 +56,9 @@ createRoot(document.getElementById('root')!).render(
           <Route path="gender-form" element={<GenderForm />} />
           <Route path="products" element={<Products />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="products/:id" element={<ProductPage />} />
+          <Route path="store" element={<Store />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="store/:id" element={<StorePage/>} />
           <Route path="lesson-1" element={<Lesson01 />} />
           <Route path="lesson-2" element={<Lesson02 />} />
           <Route path="lesson-3" element={<Lesson03 />} />

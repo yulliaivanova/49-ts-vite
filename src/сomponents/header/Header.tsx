@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from './header.module.css';
 import { useCart } from '../../context/CartContext'
+import { useAuth } from "../../context/authContex";
 
 
 
@@ -8,6 +9,7 @@ import { useCart } from '../../context/CartContext'
 export default function Header() {
   // ! мы получем данные из контекста обращаясь к нему и получаем данные через деструктуризацию
   const { cart } = useCart();
+  const { user } = useAuth();
 
   const calculateCartPrice = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity,0)
@@ -20,8 +22,10 @@ export default function Header() {
       <NavLink className={({ isActive }) => (isActive ? styles.linkActive : '')} to={"hero-gallery"}>Hero gallery</NavLink>
       <NavLink className={({ isActive }) => (isActive ? styles.linkActive : '')} to={"gender-form"}>Gender form</NavLink>
       <NavLink className={({ isActive }) => (isActive ? styles.linkActive : '')} to={"products"}>Products</NavLink>
-      <NavLink className={({ isActive }) => (isActive ? styles.linkActive : '')} to={"cart"}>Cart</NavLink>
+      <NavLink className={({ isActive }) => (isActive ? styles.linkActive : '')} to={"products"}>Login</NavLink>
+      <NavLink className={({ isActive }) => (isActive ? styles.linkActive : '')} to={"login"}>Cart</NavLink>
       <span style={{color: 'black'}}>Сумма в корзине: {calculateCartPrice().toFixed(2)}€</span>
+      <span>{user.email}</span>
     </header >
   );
 }
